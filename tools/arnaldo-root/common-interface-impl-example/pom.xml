@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>common-interface-impl-example</artifactId>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>it.unibs.ieeesb.arnaldoproject</groupId>
+		<artifactId>arnaldo-root</artifactId>
+		<version>${arnaldo.project.version}</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>it.unibs.ieeesb.arnaldoproject</groupId>
+			<artifactId>common-interfaces</artifactId>
+			<version>${arnaldo.project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<configuration>
+					<target>
+						<copy todir="../automatic-tester">
+							<fileset dir=".">
+								<include name="**/*.jar"></include>
+							</fileset>
+						</copy>	
+					</target>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
