@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+  <meta>
+    <name>Kruskal</name>
+    <time>
+      <start>27 April 2017 00:00:00</start>
+      <end>+10 day</end>
+    </time>
+    <desc>https://en.wikipedia.org/wiki/Kruskal%27s_algorithm</desc>
+  </meta>
+  <tree>
+    <node>
+      <label>A</label>
+    </node>
+    <node start="true">
+      <label>B</label>
+      <edges>
+        <edge weight="3">A</edge>
+      </edges>
+    </node>
+    <node>
+      <label>C</label>
+      <edges>
+        <edge weight="5">B</edge>
+      </edges>
+    </node>
+    <node>
+      <label>D</label>
+      <edges>
+        <edge weight="2">C</edge>
+      </edges>
+    </node>
+    <node end="true">
+      <label>E</label>
+      <edges>
+        <edge weight="1">A</edge>
+        <edge weight="4">B</edge>
+        <edge weight="6">C</edge>
+        <edge weight="7">D</edge>
+      </edges>
+    </node>
+  </tree>
+</order>
