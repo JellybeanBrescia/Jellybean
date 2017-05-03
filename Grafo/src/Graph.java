@@ -1,5 +1,5 @@
 import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.Vector;
 
 /**
  * A program to detect if a given undirected, unweighted graph contains loops
@@ -8,16 +8,17 @@ import java.util.LinkedList;
 
 public class Graph {
     private int n_vertices;
-    private LinkedList<Integer> adjacency[]; // Adjacency Matrix
+    private Vector<Integer> adjacency[]; // Adjacency Matrix
+    //
 
     // Constructor of the class Graph
     public Graph(int n_vertices) {
         this.n_vertices = n_vertices;
-        this.adjacency = new LinkedList[n_vertices];
+        this.adjacency = new Vector[n_vertices];
 
         //Initialization of adjacency matrix
         for (int i = 0; i < n_vertices; ++i) {
-            adjacency[i] = new LinkedList();
+            adjacency[i] = new Vector<Integer>();
         }
     }
 
@@ -70,30 +71,5 @@ public class Graph {
         return false;
     }
 
-    // Driver method to test above methods, aka test
-    public static void main(String args[]) {
-        // Create a graph given in the above diagram
-        // Cyclic
-        Graph g1 = new Graph(5);
-        g1.addEdge(1, 0);
-        g1.addEdge(0, 2);
-        g1.addEdge(2, 1);
-        g1.addEdge(0, 3);
-        g1.addEdge(3, 4);
-
-        if (g1.isCyclic())
-            System.out.println("Graph contains cycle");
-        else
-            System.out.println("Graph doesn't contains cycle");
-
-        //Not cyclic
-        Graph g2 = new Graph(3);
-        g2.addEdge(0, 1);
-        g2.addEdge(1, 2);
-
-        if (g2.isCyclic())
-            System.out.println("Graph contains cycle");
-        else
-            System.out.println("Graph doesn't contains cycle");
-    }
+   
 }

@@ -17,6 +17,8 @@ public class FromXML2Nodes {
 	Vector<Node> tree;
 	boolean lastimport=false;
 	File filename;
+	int idNode;
+	//COSTRUTTORE
 	public FromXML2Nodes(String filename) throws FileNotFoundException, XMLStreamException{
 		try{
 			this.filename=new File(filename);
@@ -28,6 +30,7 @@ public class FromXML2Nodes {
 		XMLStreamReader reader = factory.createXMLStreamReader(new FileInputStream(this.filename));
 		Node tmp=null;
 		String data="",reference="",weight="";
+		idNode=0;
 		while(reader.hasNext()){
 			switch(reader.next()){
 				case XMLStreamConstants.START_DOCUMENT:
@@ -77,6 +80,8 @@ public class FromXML2Nodes {
 						case "label":
 							tmp.setID(data);
 							tmp.setLabel(data);
+							tmp.setID(tmp.getLabel());
+							idNode++;
 							break;
 						case "edge":
 							//TODO maybe node still not exist
@@ -104,9 +109,15 @@ public class FromXML2Nodes {
 		return lastimport;
 	}
 	private Node getNodeByID(String id){
-		for(Node i:tree)
-			if(i.getID().equals(id))
+		/*for(Node i:tree)
+			if(i.getID().equals(id)){
 				return i;
+			}*/
+		for(int i =0; i<tree.size();i++){
+			if(tree.get(i).getID().equals(id)){
+				return tree.get(i);
+			}
+		}
 		return null;
 	}
 	
